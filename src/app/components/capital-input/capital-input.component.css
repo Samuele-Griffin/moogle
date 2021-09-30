@@ -1,0 +1,15 @@
+.form-control {
+    width: 50%;
+    margin: auto;
+}
+
+.btn-block {
+    width: 50%;
+    margin: auto;
+}
+
+.lista {
+    cursor: pointer;
+    width: 50%;
+    margin: auto;
+}

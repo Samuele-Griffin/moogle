@@ -1,0 +1,21 @@
+<div class="main-container container animate__animated animate__fadeIn">
+    <form (ngSubmit)="buscarPais()">
+        <div class="flex d-flex">
+            <input name="ingresoTexto" type="text" placeholder="Ingrese el nombre de la capital a buscar" class="form-control form-control-md" size="18px" [(ngModel)]="ingresoTexto" (input)="teclaPresionada()" autocomplete="off">
+        </div>
+        <ul class="list-group flex d-flex lista" *ngFor="let pais of capitalesSugeridas">
+            <li *ngIf="ingresoTexto.trim().length>0 && capitalesSugeridas.length!=0 && mostrarSugerencias;" class="list-group-item list-group-item-action list-reset text-info" [routerLink]="['/pais', pais.name.common]">
+                <a class="nav-link" [routerLink]="['/pais', pais.name.common]">{{pais.capital}}</a>
+            </li>
+        </ul>
+        <ul class="list-group flex d-flex lista" *ngIf="capitalesSugeridas.length===0 && !mostrarSugerencias && ingresoTexto.trim().length>0">
+            <li class="list-group-item list-group-item-action list-reset text-danger" (click)="buscarSugerencias(termino)">
+                <a (click)="buscarSugerencias(termino)"> Buscar {{termino}}</a>
+            </li>
+        </ul>
+        <div class="btn-group row p-3" role="group">
+            <button type="submit" class="btn btn-primary btn-block">Buscar</button>
+            <button type="button" [routerLink]="['/home']" class="btn btn-danger btn-block">Volver</button>
+        </div>
+    </form>
+</div>

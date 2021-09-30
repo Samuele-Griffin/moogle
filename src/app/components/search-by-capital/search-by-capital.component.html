@@ -1,0 +1,7 @@
+<div class="container main-container animate__animated animate__fadeIn">
+    <a href="/home"><img src="./../../../assets/moogle.png" class="pt-5"></a>
+    <div class="pt-3 text-center">
+        <app-capital-input (onSugerencias)="getSugerencia($event)" (onEnter2)="buscarPais($event)" (onDebounceTime)="buscarPais2($event)" [capitalesSugeridas]="capitalesSugeridas" [mostrarSugerencias]="mostrarSugerencias" [termino]="termino"></app-capital-input>
+    </div>
+</div>
+<app-results-capital [paises]="paises" [loading]="loading" [hayError]="hayError"></app-results-capital>

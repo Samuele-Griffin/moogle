@@ -1,0 +1,10 @@
+<div class="container main-container animate__animated animate__fadeIn">
+    <a href="/home"><img src="./../../../assets/moogle.png" class="pt-5"></a>
+    <div class="row pt-3">
+        <div class="col-12">
+            <app-pais-input (onSugerencia)="getSugerencia($event)" (onEnter)="getPaises($event)" (onDebounce)="buscarSugerencias($event)" [paisesSugeridos]="paisesSugeridos" [termino]="termino" [mostrarSugerencias]="mostrarSugerencias"></app-pais-input>
+        </div>
+    </div>
+</div>
+
+<app-results-pais [paises]="paises" [loading]="loading" [hayError]="hayError"></app-results-pais>

@@ -1,0 +1,16 @@
+<div class="container main-container animate__animated animate__fadeIn">
+    <a href="/home"><img src="./../../../assets/moogle.png" class="pt-5"></a>
+    <!-- //Clase ngClass -->
+    <!-- [ngClass]="{
+        'btn-success': regionActiva === region, 
+        'btn-primary': regionActiva != region}"> -->
+</div>
+<div class="container main-container animate__animated animate__fadeIn">
+    <div class="btn-group row p-2" role="group">
+        <button class="button btn btn-primary text-left" *ngFor="let region of regions" (click)="getRegion(region)" [class]="getCSSClass(region)">
+            {{region | titlecase}}
+        </button>
+        <button type="button" class="btn btn-primary text-center" [routerLink]="['/home']">...</button>
+    </div>
+</div>
+<app-results-region [paises]="paises" [loading]="loading" [hayError]="hayError"></app-results-region>

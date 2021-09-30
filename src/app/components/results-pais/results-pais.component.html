@@ -1,0 +1,93 @@
+<div class="main-container container" *ngIf="paises.length>20">
+    <div class="row">
+        <div class="col pt-3">
+            <table class="table table-hover text-center bg-white rounded shadow p-3 animate__animated animate__fadeIn animate__faster" *ngIf="paises.length>0 && !loading && !hayError">
+                <thead class="thead">
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center"> Bandera</th>
+                        <th class="text-center"> Nombre del Pais</th>
+                        <th class="text-center"> Area </th>
+                        <th class="text-center"> Info </th>
+                </thead>
+                <tbody *ngFor="let pais of paises | slice:0:paises.length/2; let i = index">
+                    <tr>
+                        <td class="text-center">{{i+1}}</td>
+                        <td class="text-center"><img [src]="pais.flags[0]" class="flag img-thumbnail" [alt]="pais.name">
+                        </td>
+                        <td class="text-center">
+                            {{pais.name.common}}
+                        </td>
+                        <td class="text-center">{{pais.area}}</td>
+                        <td class="text-center">
+                            <a [routerLink]="['/pais', pais.name.common]" class="btn btn-info btn-block"> Ver mas Informacion</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col pt-3">
+            <table class="table table-hover text-center bg-white rounded shadow p-3 animate__animated animate__fadeIn animate__faster" *ngIf="paises.length>0 && !loading && !hayError">
+                <thead class="thead">
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center"> Bandera</th>
+                        <th class="text-center"> Nombre del Pais</th>
+                        <th class="text-center"> Area </th>
+                        <th class="text-center"> Info </th>
+                </thead>
+                <tbody *ngFor="let pais of paises | slice:paises.length/2:paises.length; let i = index">
+                    <tr>
+                        <td class="text-center">{{paises.length/2+i | number: '1.0-0'}}</td>
+                        <td class="text-center"><img [src]="pais.flags[0]" class="flag img-thumbnail" [alt]="pais.name">
+                        </td>
+                        <td class="text-center">
+                            {{pais.name.common}}
+                        </td>
+                        <td class="text-center">{{pais.area}}</td>
+                        <td class="text-center">
+                            <a [routerLink]="['/pais', pais.name.common]" class="btn btn-info btn-block"> Ver mas Informacion</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="main-container container" *ngIf="paises.length<20">
+    <div class="col">
+        <table class="table table-hover text-center center bg-white rounded shadow p-3 animate__animated animate__fadeIn animate__faster" *ngIf="paises.length>0 && !loading && !hayError">
+            <thead class="thead">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center"> Bandera</th>
+                    <th class="text-center"> Nombre del Pais</th>
+                    <th class="text-center"> Area </th>
+                    <th class="text-center"> Info </th>
+            </thead>
+            <tbody *ngFor="let pais of paises; let i = index">
+                <tr>
+                    <td class="text-center">{{i+1}}</td>
+                    <td class="text-center"><img [src]="pais.flags[0]" class="flag img-thumbnail" [alt]="pais.name">
+                    </td>
+                    <td class="text-center">
+                        {{pais.name.common}}
+                    </td>
+                    <td class="text-center">{{pais.area}}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/pais', pais.name.common]" class="btn btn-info btn-block"> Ver mas Informacion</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container main-container pt-3" *ngIf="hayError">
+    <h5 class="text-center"> No se encontraron paises con el nombre del pais a buscar </h5>
+</div>
+
+<div class="w-100 d-flex justify-content-center pt-5">
+    <div class="spinner-border" role="status" *ngIf="loading">
+    </div>
+</div>

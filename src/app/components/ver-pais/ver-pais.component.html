@@ -1,0 +1,48 @@
+<div class="alert alert-info" *ngIf="!pais else divPais">
+    <h5> Por Favor Espere </h5>
+    <div class="spinner-border" role="status">
+    </div>
+</div>
+
+<div class="alert alert-danger text-center" *ngIf="hayError">
+    <h5> Pais No Encontrado </h5>
+</div>
+
+<ng-template #divPais>
+    <div class="main-container container pt-5  animate__animated animate__fadeIn" *ngIf="!hayError">
+        <div class="row bg-white text-dark pt-3 pb-3 border rounded shadow p-3 ">
+            <div class="col ">
+                <h5 class="text-center"> Bandera: </h5>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <img [src]="pais.flags[0] " [alt]="pais.name.common " class="image ">
+                    </li>
+                </ul>
+                <a [routerLink]="[ '/home'] " class="btn btn-danger btn-block text-center "> Volver a la pagina de Inicio </a>
+            </div>
+            <div class="col">
+                <ul class="list-group">
+                    <h5 class="text-center"> Informacion: </h5>
+                    <li class="list-group-item">
+                        <strong> Pais: </strong>{{pais.name.common }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong> Region: </strong>{{pais.region }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong> Capital: </strong>{{pais.capital[0] }}
+                    </li>
+                </ul>
+                <h6 class="text-center pt-2"> Traducciones </h6>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.eng}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.spa}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.fra}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.que}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.mah}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.aym}}</p>
+                <p class="badge bg-primary mr-1 text-white">{{pais.languages.grn}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+</ng-template>
